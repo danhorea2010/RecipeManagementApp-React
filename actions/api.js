@@ -1,7 +1,6 @@
-import axios from "axios";
-
+const axios = require('axios').default;
 //TODO: add api url
-const baseUrl = "TODO/api/";
+const baseUrl = "localhost/api/v1/";
 
 export default {
     ingredient(url=baseUrl+"ingredient/") {
