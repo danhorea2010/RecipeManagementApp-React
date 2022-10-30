@@ -9,6 +9,10 @@ export const ACTION_TYPES = {
 
 const formatData = data => ({
     ...data,
+    calories: parseInt(data.calories ? data.calories : 0),
+    timesLiked: parseInt(data.timesLiked ? data.timesLiked : 0),
+    timesShared: parseInt(data.timesShared ? data.timesShared : 0),
+    
 })
 
 export const fetchAll = () => dispatch => {

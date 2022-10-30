@@ -7,6 +7,11 @@ import { Stack, TextInput, IconButton,Button } from "@react-native-material/core
 const initialFieldValues = {
     ingredients : [],
     calories : 0,
+    type: "",
+    name: "",
+    timesLiked: 0,
+    timesShared: 0
+
 }
 
 const RecipeForm = (props) => {
