@@ -6,7 +6,7 @@
 
 * Clone the repository
 ```bash
-https://github.com/danhorea2010/RecipeManagementApp-React/
+git clone https://github.com/danhorea2010/RecipeManagementApp-React.git
 ```
 
 * Make sure your android environment is setup
