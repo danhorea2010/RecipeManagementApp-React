@@ -5,13 +5,29 @@
  * @format
  */
 
+// module.exports = {
+//   transformer: {
+//     getTransformOptions: async () => ({
+//       transform: {
+//         experimentalImportSupport: false,
+//         inlineRequires: true,
+//       },
+//     }),
+//   },
+// };
+
+
+const path = require('path');
+
 module.exports = {
+  projectRoot: path.resolve('.'),
   transformer: {
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
-        inlineRequires: true,
+        inlineRequires: false,
       },
     }),
   },
+  watchFolders: [path.resolve('node_modules')],
 };
