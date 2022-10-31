@@ -8,11 +8,11 @@
 
 import React from 'react';
 
-import type {Node} from 'react';
+import type { Node } from 'react';
 
-  import {store} from "./actions/store"
-  import {Provider} from "react-redux"
-  import RecipeList from './components/recipe.list';
+import { store } from "./actions/store"
+import { Provider } from "react-redux"
+import RecipeList from './components/recipe.list';
 
 import {
   SafeAreaView,
@@ -34,7 +34,7 @@ import {
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
-const Section = ({children, title}): Node => {
+const Section = ({ children, title }): Node => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -68,11 +68,17 @@ export const App: () => Node = () => {
   };
 
   return (
-     <Provider store={store}>
-    <Text> Test</Text>
-    <RecipeList></RecipeList>
-     </Provider>
-  );  
+    <View>
+      <Provider store={store}>
+      <Text> Test</Text>
+      <Text> Test</Text>
+      <Text> Test</Text>
+      <Text> Test</Text>
+      <Text> Test</Text>
+        <RecipeList></RecipeList>
+      </Provider>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
