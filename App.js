@@ -14,11 +14,12 @@
  import {Provider} from 'react-redux';
  import RecipeList from './components/recipe.list';
  import {Button, Stack, Switch} from '@react-native-material/core';
- import { 
-   useDimensions, 
-   useDeviceOrientation 
- } from '@react-native-community/hooks';
+ import {NativeRouter, Route, Link, Routes, useParams} from 'react-router-native';
  
+ import {
+   useDimensions,
+   useDeviceOrientation,
+ } from '@react-native-community/hooks';
  
  import {
    SafeAreaView,
@@ -45,17 +46,30 @@
  import {useState} from 'react';
  import WelcomeScreen from './screens/WelcomeScreen';
  import IngredientsList from './components/ingredients.list';
- 
+ import IngredientDetail from './components/ingredients.detail';
  
  export const App: () => Node = () => {
- 
- 
    return (
-       // <WelcomeScreen />
-       //<GoalListTest/>
-       <Provider store={store}>
-         <IngredientsList/>
-       </Provider>
+     // <WelcomeScreen />
+     //<GoalListTest/>
+ 
+     <SafeAreaView>
+       <NativeRouter>
+         <Provider store={store}>
+           <Stack style={styles.sectionContainer}>
+             <Link to="/">
+               <Text style={styles.buttonText2}>Ingredient List</Text>
+             </Link>
+           </Stack>
+           <View>
+             <Routes>
+               <Route path="/" element={<IngredientsList />} />
+               <Route path={`/ingredient/:index`} index={true} element={<IngredientDetail/>} />
+             </Routes>
+           </View>
+         </Provider>
+       </NativeRouter>
+     </SafeAreaView>
    );
  };
  
@@ -82,6 +96,14 @@
      // alignItems: 'center',
      // justifyContent: 'center',
      paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+   },
+   buttonText1: {
+     width: '40%',
+     height: 30,
+   },
+   buttonText2: {
+     width: '40%',
+     height: 30,
    },
  });
  
