@@ -15,7 +15,7 @@ const formatData = data => ({
 })
 
 export const fetchAll = () => dispatch => {
-    api.ingredient.fetchAll()
+    api.ingredient().fetchAll()
         .then(
             response => {
                 dispatch({
