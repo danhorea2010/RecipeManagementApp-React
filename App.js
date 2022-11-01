@@ -44,12 +44,18 @@
  } from 'react-native/Libraries/NewAppScreen';
  import {useState} from 'react';
  import WelcomeScreen from './screens/WelcomeScreen';
+ import IngredientsList from './components/ingredients.list';
+ 
  
  export const App: () => Node = () => {
  
  
    return (
-       <WelcomeScreen />
+       // <WelcomeScreen />
+       //<GoalListTest/>
+       <Provider store={store}>
+         <IngredientsList/>
+       </Provider>
    );
  };
  
