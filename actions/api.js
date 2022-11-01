@@ -1,6 +1,7 @@
 const axios = require('axios').default;
 //TODO: add api url
-const baseUrl = "https://recipe-manger-api-staging.onrender.com/api/v1/";
+//const baseUrl = "https://recipe-manger-api-staging.onrender.com/api/v1/";
+const baseUrl = "http://127.0.0.1:3000/api/v1/"
 
 export default {
     ingredient(url=baseUrl+"ingredients/") {
