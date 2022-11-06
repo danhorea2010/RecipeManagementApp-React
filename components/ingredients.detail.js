@@ -9,7 +9,6 @@ const IngredientDetail = props => {
   // useEffect(() => {
   //   props.fetchIngredientById(params.index-1);
   // }, []);
-
   const params = useParams();
 
   return (
