@@ -6,9 +6,9 @@ import {StyleSheet} from 'react-native';
 import { useParams} from 'react-router-native';
 
 const IngredientDetail = props => {
-  useEffect(() => {
-    props.fetchAllIngredients();
-  }, []);
+  // useEffect(() => {
+  //   props.fetchIngredientById(params.index-1);
+  // }, []);
 
   const params = useParams();
 
@@ -38,6 +38,7 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = {
   fetchAllIngredients: actions.fetchAll,
+  fetchIngredientById: actions.fetchById,
   deleteIngredient: actions.remove,
 };
 
