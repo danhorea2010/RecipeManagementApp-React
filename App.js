@@ -15,12 +15,7 @@
  import RecipeList from './components/recipe.list';
  import {Button, Stack, Switch} from '@react-native-material/core';
  import {NativeRouter, Route, Link, Routes, useParams} from 'react-router-native';
- 
- import {
-   useDimensions,
-   useDeviceOrientation,
- } from '@react-native-community/hooks';
- 
+
  import {
    SafeAreaView,
    ScrollView,
