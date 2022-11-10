@@ -11,6 +11,11 @@ export const ingredients = (state=initialState, action) => {
                 ...state,
                 list: [...action.payload]
             }
+        case ACTION_TYPES.FETCH_BY_ID:
+            return {
+                ...state,
+                list: state.list.filter(x => x.id != action.payload)
+            }
         case ACTION_TYPES.CREATE:
             return {
                 ...state,

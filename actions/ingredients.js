@@ -5,6 +5,7 @@ export const ACTION_TYPES = {
     UPDATE: "UPDATE",
     DELETE: "DELETE",
     FETCH_ALL: "FETCH_ALL",
+    FETCH_BY_ID: "FETCH_BY_ID",
 }
 
 // used to format data if needed
@@ -25,7 +26,20 @@ export const fetchAll = () => dispatch => {
             }
         )
         .catch(err => console.log(err))
+}
 
+export const fetchById = (id) => dispatch => {
+    api.ingredient().fetchById(id)
+        .then(
+            response => {
+                dispatch({
+                    type: ACTION_TYPES.FETCH_BY_ID,
+                    payload: response.data
+                })
+                onSuccess()
+            }
+        )
+        .catch(err => console.log(err))
 }
 
 export const create = (data, onSuccess) => dispatch => {
