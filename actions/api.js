@@ -1,9 +1,12 @@
+import { Platform } from 'react-native';
+
 const axios = require('axios').default;
 //TODO: add api url
-const baseUrl = "localhost/api/v1/";
+//const baseUrl = "https://recipe-manger-api-staging.onrender.com/api/v1/";
+const baseUrl = Platform.OS === 'ios' ? 'http://localhost:3000/api/v1/' : 'http://10.0.2.2:3000/api/v1/'
 
 export default {
-    ingredient(url=baseUrl+"ingredient/") {
+    ingredient(url=baseUrl+"ingredients/") {
         return {
             fetchAll: () => axios.get(url),
             fetchById : id => axios.get(url+id),
@@ -12,7 +15,7 @@ export default {
             delete: id => axios.delete(url+id)
         }
     },
-    recipe(url=baseUrl+"recipe/") {
+    recipe(url=baseUrl+"recipes/") {
         return {
             fetchAll: () => axios.get(url),
             fetchById : id => axios.get(url+id),

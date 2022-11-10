@@ -1,47 +1,46 @@
-import { ListItem } from "@react-native-material/core"
-import React,{useState, useEffect} from "react"
-import { connect } from "react-redux"
-import * as actions from "../actions/ingredients"
+import React, {useState, useEffect} from 'react';
+import {connect} from 'react-redux';
+import * as actions from '../actions/ingredients';
+import {SafeAreaView, View} from 'react-native';
+import { IngredientItem } from './ingredients.item';
+import { StyleSheet } from 'react-native';
+
+const IngredientList = props => {
+  const onDelete = id => {
+    props.deleteIngredient(id, () => {
+      console.log('Ingredient deleted!!');
+    });
+  };
 
 
-const IngredientList = (props) => {
+  useEffect(() => {
+    props.fetchAllIngredients();
+  }, []);
 
-    const onDelete = id => {
-        if(window.confirm("Are you sure you want to delete this ingredient?")){
-            props.deleteIngredient(id, () => {
-                console.log("Ingredient deleted!!");
-            })
-        }
+  return (
+    <SafeAreaView style={styles.container}>
+      {props.ingredientsList.map((record, index) => {
+        return (
+          <IngredientItem key={index} index={index} name={record.name} macros={record.macros} type={record.type}/>
+        );
+      })}
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+    container: {
+        marginTop: 20,
     }
-
-    useEffect(() => {
-        props.fetchAllIngredients()
-    },[])
-
-    return <>
-        {
-            props.ingredientsList.map( (record, index) => {
-                return (
-                    <>
-                    <ListItem title={record.name} />
-                    <ListItem title={record.calories} />
-                    <ListItem title={record.type} />
-                    </>
-                )
-            })
-        }
-    </>
-}
-
-const mapStateToProps = state => ({
-    ingredientsList: state.ingredients.list
-
 })
 
+const mapStateToProps = state => ({
+  ingredientsList: state.ingredients.list,
+});
 
 const mapActionsToProps = {
-    fetchAllIngredients: actions.fetchAll,
-    deleteIngredient: actions.remove,
-}
+  fetchAllIngredients: actions.fetchAll,
+  deleteIngredient: actions.remove,
+};
 
-export default connect(mapStateToProps, mapActionsToProps)(IngredientList)
+export default connect(mapStateToProps, mapActionsToProps)(IngredientList);

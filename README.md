@@ -8,15 +8,13 @@
 ```bash
 git clone https://github.com/danhorea2010/RecipeManagementApp-React.git
 ```
-
-* Make sure your android environment is setup
+## Running on Android
+* Setup your android environment
 ```bash
-# For macOS
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 ```
 * Make sure ```JAVA_HOME``` is properly set
 ```bash
-# For macOS
 export JAVA_HOME="/Application/Android Studio.app/Contents/jre/Contents/Home"
 ```
 * Run Metro server
@@ -29,6 +27,22 @@ react-native start
 
 ```
 react-native run-android
+```
+
+## Running on IOS
+
+* Make sure you have Xcode simulator installed
+
+* Install all the packages
+```bash
+cd ios
+pod install
+```
+
+* Then run in main folder
+
+```bash
+react-native run-ios
 ```
 
 

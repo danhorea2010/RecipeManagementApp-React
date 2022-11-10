@@ -9,11 +9,13 @@ export const ACTION_TYPES = {
 
 // used to format data if needed
 const formatData = data => ({
-    ...data
+    ...data,
+    calories: parseInt(data.calories ? data.calories : 0),
+    average_price: parseInt(data.average_price ? data.average_price : 0)
 })
 
 export const fetchAll = () => dispatch => {
-    api.ingredient.fetchAll()
+    api.ingredient().fetchAll()
         .then(
             response => {
                 dispatch({
