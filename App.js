@@ -42,29 +42,34 @@
  import WelcomeScreen from './screens/WelcomeScreen';
  import IngredientsList from './components/ingredients.list';
  import IngredientDetail from './components/ingredients.detail';
+ import IngredientsAPITesting from './components/ingredient.list.api.testing';
+import RecipesAPITesting from './components/recipes.list.api.testing';
  
  export const App: () => Node = () => {
    return (
      // <WelcomeScreen />
      //<GoalListTest/>
- 
-     <SafeAreaView>
-       <NativeRouter>
-         <Provider store={store}>
-           <Stack style={styles.sectionContainer}>
-             <Link to="/">
-               <Text style={styles.buttonText2}>Ingredient List</Text>
-             </Link>
-           </Stack>
-           <View>
-             <Routes>
-               <Route path="/" element={<IngredientsList />} />
-               <Route path={`/ingredient/:index`} index={true} element={<IngredientDetail/>} />
-             </Routes>
-           </View>
-         </Provider>
-       </NativeRouter>
-     </SafeAreaView>
+    //<IngredientsAPITesting></IngredientsAPITesting>
+
+    <RecipesAPITesting/>
+
+    // <SafeAreaView>
+    //   <NativeRouter>
+    //     <Provider store={store}>
+    //       <Stack style={styles.sectionContainer}>
+    //         <Link to="/">
+    //           <Text style={styles.buttonText2}>Ingredient List</Text>
+    //         </Link>
+    //       </Stack>
+    //       <View>
+    //         <Routes>
+    //           <Route path="/" element={<IngredientsList />} />
+    //           <Route path={`/ingredient/:index`} index={true} element={<IngredientDetail/>} />
+    //         </Routes>
+    //       </View>
+    //     </Provider>
+    //   </NativeRouter>
+    // </SafeAreaView>
    );
  };
  
