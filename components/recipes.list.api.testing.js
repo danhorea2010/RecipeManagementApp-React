@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {
   View,
   Text,
@@ -11,9 +13,12 @@ import {
 } from 'react-native';
 
 // For local testing only
+// Logic for extracting ingredients, recipes and so on from the api should be in a separate file
+// Components should just use a hook to get and use the data
+// 
 const RecipesAPITesting = props => {
-  const [data, setData] = useState([]);
   const [recipes, setRecipes] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
 
   const getData = () => {
     fetch(
@@ -31,9 +36,16 @@ const RecipesAPITesting = props => {
       })
       .then(json => {
         let recipesMap = json.hits.flatMap(hit => hit.recipe);
-        const newRecipesMap = recipesMap.sort((a, b) => 
-            a.totalNutrients.PROCNT.quantity < b.totalNutrients.PROCNT.quantity ? 1 : -1
-        )
+        const newRecipesMap = recipesMap.sort((a, b) =>
+          a.totalNutrients.PROCNT.quantity < b.totalNutrients.PROCNT.quantity
+            ? 1
+            : -1,
+        );
+
+        console.log(json);
+        let ingredientsList = json.hits.flatMap(hit => hit.recipe.ingredients);
+
+        setIngredients(ingredientsList);
         setRecipes(newRecipesMap);
       })
       .catch(err => {
@@ -51,12 +63,18 @@ const RecipesAPITesting = props => {
         <View style={styles.container}>
           <Text style={styles.text}>{item.label}</Text>
           <Text>Calories: {Math.round(item.calories)} kcal</Text>
-          <Text>PROTEIN 💪: {Math.round(item.totalNutrients.PROCNT.quantity)} g</Text>
+          <Text>
+            PROTEIN 💪: {Math.round(item.totalNutrients.PROCNT.quantity)} g
+          </Text>
           <Text>Dish Type: {item.dishType}</Text>
-          <Text>Ingredients: {item.ingredients.map(ingredient => <View
-          key={ingredient.foodId}>
-            <Text>{ingredient.text.trim() +'\n'}</Text>
-          </View>)}</Text>
+          <Text>
+            Ingredients:{' '}
+            {item.ingredients.map(ingredient => (
+              <View key={ingredient.foodId}>
+                <Text>{ingredient.text.trim() + '\n'}</Text>
+              </View>
+            ))}
+          </Text>
           <Image
             style={{width: 200, height: 200}}
             source={{uri: item.images.SMALL.url}}></Image>
@@ -75,13 +93,8 @@ const RecipesAPITesting = props => {
       }}>
       <View>
         {recipes.length > 0 ? (
-          
           <View>
-            <FlatList 
-            data={recipes} 
-            renderItem={renderItem}
-            
-            ></FlatList>
+            <FlatList data={recipes} renderItem={renderItem}></FlatList>
           </View>
         ) : (
           <View style={styles.container}>

@@ -44,6 +44,7 @@
  import IngredientDetail from './components/ingredients.detail';
  import IngredientsAPITesting from './components/ingredient.list.api.testing';
 import RecipesAPITesting from './components/recipes.list.api.testing';
+import UserPantry from './components/user.pantry';
  
  export const App: () => Node = () => {
    return (
@@ -51,7 +52,8 @@ import RecipesAPITesting from './components/recipes.list.api.testing';
      //<GoalListTest/>
     //<IngredientsAPITesting></IngredientsAPITesting>
 
-    <RecipesAPITesting/>
+    // <RecipesAPITesting/>
+    <UserPantry />
 
     // <SafeAreaView>
     //   <NativeRouter>
