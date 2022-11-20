@@ -52,6 +52,7 @@ import RecipesAPITesting from './components/recipes.list.api.testing';
     //<IngredientsAPITesting></IngredientsAPITesting>
 
     <RecipesAPITesting/>
+    //<IngredientsAPITesting/>
 
     // <SafeAreaView>
     //   <NativeRouter>
